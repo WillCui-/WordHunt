@@ -1,4 +1,5 @@
 from trie import Trie
+from wordfreq import zipf_frequency
 import copy
 
 class Game:
@@ -44,8 +45,9 @@ class Game:
                 word_list |= set(self.traverse((x, y), [], ''))
 
         word_list = list(word_list)
-        word_list.sort(key=len, reverse=True)
-        for word in word_list:
+        word_list.sort(key=lambda word: (-len(word), word))
+        word_list = list(filter(lambda word: zipf_frequency(word, 'en') > 0, word_list))
+        for word in word_list[:50]:
             print(word)
 
 
