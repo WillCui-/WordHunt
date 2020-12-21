@@ -15,4 +15,7 @@ Tests done with unittest
 # Getting Coverage
 
 `coverage run -m unittest -v`
+
 `coverage report`
+
+`coverage html`
