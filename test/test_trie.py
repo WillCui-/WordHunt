@@ -7,6 +7,7 @@ class TestTrie(unittest.TestCase):
         trie = Trie()
         self.assertIsInstance(trie.root, defaultdict)
 
+
     def test_init_default_value(self):
         trie = Trie()
         self.assertEqual(trie.root['asdf'], '_end')
