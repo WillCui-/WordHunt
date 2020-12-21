@@ -1,6 +1,7 @@
-from trie import Trie
-from wordfreq import zipf_frequency
 import copy
+from wordfreq import zipf_frequency
+
+from src.trie import Trie
 
 class Game:
     """

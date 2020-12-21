@@ -1,12 +1,12 @@
 from collections import defaultdict
 
-class Trie(object):
+class Trie():
     """
     Initialization
     """
     def __init__(self):
         self.root = defaultdict(lambda: "_end")
-        
+
 
     """
     Inserts word into Trie and returns the Trie
