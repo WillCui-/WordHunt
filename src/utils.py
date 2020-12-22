@@ -22,16 +22,16 @@ def deserialize(data):
     stack = []
 
     for char in data:
-        if char is '<':
+        if char == '<':
             stack.append(current)
-        elif char is '>':
-            if (len(stack) > 1):
-                stack[len(stack) - 1]["_end"] = "_end"
+        elif char == '>':
             stack.pop()
+        elif char == '_end':
+            stack[-1]["_end"] = "_end"
         else:
             current = defaultdict(lambda: "_end")
             if (len(stack) > 0):
-                stack[len(stack) - 1].setdefault(char, current)
+                stack[-1].setdefault(char, current)
     
     output = Trie()
     output.root = ddict

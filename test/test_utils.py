@@ -17,6 +17,7 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(trie.root.keys(), de.root.keys())
         self.assertEqual(trie.root['h'].keys(), de.root['h'].keys())
         
+
     def test_serialize_deserialize_different_prefixes(self):
         trie = Trie()
         trie.insert('a')
@@ -31,6 +32,7 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(trie.root.keys(), de.root.keys())
         self.assertEqual(trie.root['a'].keys(), de.root['a'].keys())
 
+
     def test_serialize_deserialize_duplicates(self):
         trie = Trie()
         trie.insert('a')
@@ -40,6 +42,22 @@ class TestUtils(unittest.TestCase):
         ser = serialize(trie.root)
 
         self.assertEqual(len(ser), 20)
+
+        de = deserialize(serialize(trie.root))
+        self.assertIsInstance(de, Trie)
+        self.assertEqual(trie.root.keys(), de.root.keys())
+        self.assertEqual(trie.root['a'].keys(), de.root['a'].keys())
+
+
+    def test_serialize_deserialize_prefix_words(self):
+        trie = Trie()
+        trie.insert('a')
+        trie.insert('abc')
+        trie.insert('abcde')
+        trie.insert('abcdefg')
+        ser = serialize(trie.root)
+
+        self.assertEqual(len(ser), 27)
 
         de = deserialize(serialize(trie.root))
         self.assertIsInstance(de, Trie)
