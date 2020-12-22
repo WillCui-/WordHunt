@@ -2,6 +2,7 @@ import copy
 from wordfreq import zipf_frequency
 
 from src.trie import Trie
+from src.utils import serialize, deserialize
 
 class Game:
     """
@@ -9,14 +10,12 @@ class Game:
     """
     def __init__(self, letters):
         self.board = []
-        self.set_board(list(letters))
-        
-        print("Making Trie...")
-        self.trie = Trie()
-        self.make_trie('words_alpha.txt')
-        print("Trie complete!")
+        try:
+            self.__set_board(list(letters))
+        except Exception:
+            print("Needs 16 letters")
 
-        self.calculate_words()
+        self.trie = Trie()
 
 
     def make_trie(self, lexicon):
@@ -25,11 +24,29 @@ class Game:
         for word in words:
             if len(word) > 2 and len(word) < 17:
                 self.trie.insert(word)
+        f.close()
 
 
-    def set_board(self, letters):
+    def serialize_and_store(self, lexicon, store):
+        self.make_trie(lexicon)
+        s = serialize(self.trie.root)
+        f = open(store, 'a')
+        for node in s:
+            f.write(node + " ")
+        f.close()
+
+    
+    def deserialize_and_store(self, store):
+        f = open(store, 'r')
+        nodes = f.read().split(' ')
+        print("constructing trie...")
+        self.trie = deserialize(nodes)
+        f.close()
+
+
+    def __set_board(self, letters):
         if len(letters) is not 16:
-            raise Exception("Need 16 letters")
+            raise Exception("Needs 16 letters")
 
         self.board = []
         for i in range(0, 4):
@@ -43,16 +60,16 @@ class Game:
         word_list = set()
         for x in range(len(self.board)):
             for y in range(len(self.board[x])):
-                word_list |= set(self.traverse((x, y), [], ''))
+                word_list |= set(self.__traverse((x, y), [], ''))
 
         word_list = list(word_list)
         word_list.sort(key=lambda word: (-len(word), word))
         word_list = list(filter(lambda word: zipf_frequency(word, 'en') > 0, word_list))
-        for word in word_list[:50]:
-            print(word)
+        
+        return word_list
 
 
-    def traverse(self, current, seen, word):
+    def __traverse(self, current, seen, word):
         output = set()
 
         x, y = current
@@ -64,20 +81,17 @@ class Game:
             output.add(new_word)
             
         seen.append(current)
-        neighbors = self.find_valid_neighbors(current, seen)
-
-        if not neighbors:
-            return output
+        neighbors = self.__find_valid_neighbors(current, seen)
 
         for neighbor in neighbors:
             copied_seen = copy.deepcopy(seen)
-            asdf = self.traverse(neighbor, copied_seen, new_word)
+            asdf = self.__traverse(neighbor, copied_seen, new_word)
             output |= asdf
 
         return output
 
                 
-    def find_valid_neighbors(self, current, seen):
+    def __find_valid_neighbors(self, current, seen):
         x_pos, y_pos = current
         candidates = []
 

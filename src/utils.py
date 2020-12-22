@@ -30,7 +30,8 @@ def deserialize(data):
             stack.pop()
         else:
             current = defaultdict(lambda: "_end")
-            stack[len(stack) - 1].setdefault(char, current)
+            if (len(stack) > 0):
+                stack[len(stack) - 1].setdefault(char, current)
     
     output = Trie()
     output.root = ddict
