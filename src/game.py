@@ -29,6 +29,7 @@ class Game:
 
     def serialize_and_store(self, lexicon, store):
         self.make_trie(lexicon)
+        open(store, 'w').close()
         s = serialize(self.trie.root)
         f = open(store, 'a')
         for node in s:

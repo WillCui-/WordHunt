@@ -3,8 +3,8 @@ import time
 
 def main():
     g = Game('tcedgwiaethlrnrg')
-    # g.deserialize_and_store("serialized_trie.txt")
-    g.make_trie('words_alpha.txt')
+    g.deserialize_and_store("serialized_trie.txt")
+    # g.make_trie('words_alpha.txt')
     word_list = g.calculate_words()
 
     for word in word_list[:50]:
