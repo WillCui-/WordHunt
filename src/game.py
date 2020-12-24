@@ -1,5 +1,5 @@
 import copy
-from wordfreq import zipf_frequency
+# from wordfreq import zipf_frequency
 
 from src.trie import Trie
 from src.utils import serialize, deserialize
@@ -65,7 +65,7 @@ class Game:
 
         word_list = list(word_list)
         word_list.sort(key=lambda word: (-len(word), word))
-        word_list = list(filter(lambda word: zipf_frequency(word, 'en') > 0, word_list))
+        # word_list = list(filter(lambda word: zipf_frequency(word, 'en') > 0, word_list))
         
         return word_list
 

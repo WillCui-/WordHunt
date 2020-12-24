@@ -2,7 +2,9 @@
 
 Solver for the 'Word Hunt' game on GamePidgeon
 
-`pip3 install wordfreq`
+`pip install wordfreq`
+
+`pip install flask`
 
 Dictionary from https://github.com/dwyl/english-words
 

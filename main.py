@@ -1,4 +1,5 @@
 from src.game import Game
+from app import app
 import time
 
 def main():
@@ -6,7 +7,7 @@ def main():
     g.deserialize_and_store("serialized_trie.txt")
     # g.make_trie('words_alpha.txt')
     word_list = g.calculate_words()
-
+    
     for word in word_list[:50]:
         print(word)
 
@@ -14,4 +15,4 @@ def main():
 if __name__ == "__main__":
     start = time.time()
     main()
-    print("--- %s seconds ---" % (time.time() - start))
+    print("Runtime: %s seconds" % (time.time() - start))
