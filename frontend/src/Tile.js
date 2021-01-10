@@ -1,16 +1,16 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
 
 class Tile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '1'
+            value: '111'
         };
     }
 
-
     render() {
-        return <h1>{this.state.value}</h1>
+        return <Button className="square" variant="light">{this.state.value}</Button>
     }
 }
 
