@@ -9,6 +9,8 @@ function Board(props) {
             const c = e.key;
             if (e.keyCode === 8) {
                 setLetters(l => l.slice(0, l.length - 1));
+            } else if (e.keyCode === 18) {
+                // Call Algorithm
             } else if (c.length === 1 && c.match(/[a-zA-Z]/i)) {
                 setLetters(l => l.concat([c.toUpperCase()]));
             }
@@ -66,7 +68,17 @@ function Board(props) {
 
 function Square(props) {
     return (
-      <div className="square-big">{props.value}</div>
+        <div style={{
+            background: 'rgb(117, 38, 38)',
+            border: '3px solid yellowgreen',
+            'border-radius': '10px',
+            height: '220px',
+            'padding-top': '7px',
+            width: '220px',
+            'z-index': -999,
+        }}>
+            {props.value}
+        </div>
     );
 }
 

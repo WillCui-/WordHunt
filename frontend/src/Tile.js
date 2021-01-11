@@ -6,9 +6,14 @@ class Tile extends React.Component {
     render() {
         return (
             <Button 
-                className="square" 
                 variant="light"
-                onKeyDown={this.props.onKeyDown}>
+                onKeyDown={this.props.onKeyDown}
+                style={{
+                    background: '#caa472',
+                    'font-size': '20px',
+                    'font-weight': 600,
+                    height: '50px', 
+                    width: '50px',}}>
                 {this.props.value}
             </Button>
         )
