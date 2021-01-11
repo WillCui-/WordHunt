@@ -9,10 +9,11 @@ function Board(props) {
             const c = e.key;
             if (e.keyCode === 8) {
                 setLetters(l => l.slice(0, l.length - 1));
-            } else if (e.keyCode === 18) {
-                // Call Algorithm
-            } else if (c.length === 1 && c.match(/[a-zA-Z]/i)) {
+            } else if (letters.length < 16 && c.length === 1 && c.match(/[a-zA-Z]/i)) {
                 setLetters(l => l.concat([c.toUpperCase()]));
+                if (letters.length === 16) {
+                    // Call Algorithm
+                }
             }
         };
 

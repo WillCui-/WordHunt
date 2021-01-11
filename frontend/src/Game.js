@@ -14,9 +14,13 @@ class Game extends React.Component {
                 <Card.Header as="h5">WordHunt Helper</Card.Header>
                 <Card.Body style={{padding: '50px'}}>
                     <Container>
-                        <Row>
+                        <Row className="align-items-end">
                             <Col><Board /></Col>
-                            <Col><Results /></Col>
+                            <Col>
+                                <Results 
+                                    results={['abc', 'def', 'aaaaaaaaaa']}
+                                />
+                            </Col>
                         </Row>
                     </Container>
                 </Card.Body>
