@@ -35,9 +35,13 @@
 }
 
 .square-big {
-  background: #caa472 !important;
-  height: 500px;
-  width: 500px;
+  background: rgb(117, 38, 38);
+  border: 3px solid yellowgreen;
+  border-radius: 10px;
+  height: 220px;
+  padding-top: 7px;
+  width: 220px;
+  z-index: -999;
 }
 
 @keyframes App-logo-spin {
