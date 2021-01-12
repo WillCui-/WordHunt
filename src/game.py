@@ -9,13 +9,10 @@ class Game:
     Initalize Game
     """
     def __init__(self, letters):
-        self.board = []
         try:
-            self.__set_board(list(letters))
+            self.set_board(list(letters))
         except Exception:
             print("Needs 16 letters")
-
-        self.trie = Trie()
 
 
     def make_trie(self, lexicon):
@@ -45,8 +42,9 @@ class Game:
         f.close()
 
 
-    def __set_board(self, letters):
-        if len(letters) is not 16:
+    # TODO: Make tests 
+    def set_board(self, letters):
+        if len(letters) != 16:
             raise Exception("Needs 16 letters")
 
         self.board = []
@@ -55,6 +53,10 @@ class Game:
             for j in range(0 + i * 4, 4 + i * 4):
                 arr.append(letters[j])
             self.board.append(arr)
+
+
+    def get_board(self):
+        return self.board
 
 
     def calculate_words(self):
