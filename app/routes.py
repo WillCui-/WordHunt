@@ -21,9 +21,10 @@ def letters():
     if request.method == 'GET':
         return {'letters': g.get_board()}
     elif request.method == 'POST':
-        letters = request.form.get('letters')
+        letters = request.form['letters']
         g.set_board(letters)
-        word_list = g.calculate_words
+        word_list = g.calculate_words()
+        return {'results': word_list}
         
 
 @app.route('/results', methods=['GET'])

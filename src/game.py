@@ -44,7 +44,7 @@ class Game:
 
     # TODO: Make tests 
     def set_board(self, letters):
-        if len(letters) != 16:
+        if letters is None or len(letters) != 16:
             raise Exception("Needs 16 letters")
 
         self.board = []
