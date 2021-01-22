@@ -56,7 +56,7 @@ class Game:
 
 
     def get_board(self):
-        return self.board
+        return [x for row in self.board for x in row if x != ' ']
 
 
     def calculate_words(self):

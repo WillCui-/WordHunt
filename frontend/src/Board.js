@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Tile from "./Tile.js";
+import axios from 'axios';
 
 function Board(props) {
+    let data;
+    // axios.get(`http://localhost:5000/letters`).then(res => {
+    //     data = res.data;
+    // });
+    // console.log(data)
+    // // let lets = DataService.getLetters();
     const [letters, setLetters] = useState([]);
 
     useEffect(() => {
@@ -11,9 +18,7 @@ function Board(props) {
                 setLetters(l => l.slice(0, l.length - 1));
             } else if (letters.length < 16 && c.length === 1 && c.match(/[a-zA-Z]/i)) {
                 setLetters(l => l.concat([c.toUpperCase()]));
-                if (letters.length === 16) {
-                    // Call Algorithm
-                }
+                
             }
         };
 
@@ -23,6 +28,21 @@ function Board(props) {
             document.removeEventListener('keydown', handleKey);
         }
     }, [letters]);
+
+    if (letters.length === 16) {
+        const formData = new FormData();
+        let messages = '';
+        letters.forEach(l => {
+            messages += l;
+        });
+        formData.append("letters", messages);
+        axios.post(`http://localhost:5000/letters`, formData)
+            .then(res => {
+                console.log("posting", res.data['results']);
+            }).catch(error => {
+                console.log(error.response);
+            });
+    }
 
     function renderTile(key) {
         return (

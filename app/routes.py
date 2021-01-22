@@ -22,6 +22,7 @@ def letters():
         return {'letters': g.get_board()}
     elif request.method == 'POST':
         letters = request.form['letters']
+        letters = letters.lower()
         g.set_board(letters)
         word_list = g.calculate_words()
         return {'results': word_list}
