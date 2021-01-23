@@ -10,8 +10,8 @@ class Tile extends React.Component {
                 onKeyDown={this.props.onKeyDown}
                 style={{
                     background: '#caa472',
-                    'font-size': '20px',
-                    'font-weight': '600',
+                    'fontSize': '20px',
+                    'fontWeight': '600',
                     height: '50px', 
                     width: '50px',}}>
                 {this.props.value}

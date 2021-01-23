@@ -47,16 +47,22 @@ function Game(props) {
     }
 
     return (
-        <Card>
+        <Card style={{
+            width: '100%', 
+        }}>
             <Card.Header as="h5">WordHunt Helper</Card.Header>
-            <Card.Body style={{padding: '50px'}}>
-                <Container>
-                    <Row className="align-items-end">
-                        <Col>
+            <Card.Body style={{
+                paddingBottom: '50px',
+            }}>
+                <Container fluid>
+                    <Row className="justify-content-md-center" style={{padding: '50px'}}>
+                        <Col md='auto'>
                             <Board 
                                 letters={ letters }
                             />
                         </Col>
+                    </Row>
+                    <Row>
                         <Col>
                             <Results 
                                 results={ results }

@@ -10,7 +10,7 @@ class Results extends React.Component {
         }
 
         return (
-            <ListGroup variant='flush' style={{'text-align': 'left'}}>
+            <ListGroup variant='flush' style={{'textAlign': 'left'}}>
                 {results}
             </ListGroup>
         )
