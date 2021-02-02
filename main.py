@@ -14,5 +14,5 @@ import time
 
 if __name__ == "__main__":
     start = time.time()
-    main()
+    # main()
     print("Runtime: %s seconds" % (time.time() - start))

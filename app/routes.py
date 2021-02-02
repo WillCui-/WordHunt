@@ -13,7 +13,7 @@ word_list = []
 @app.route('/')
 @app.route('/index')
 def index():
-    return {'message': 'bet'}
+    return app.send_static_file('index.html')
 
 
 @app.route('/letters', methods=['GET', 'POST'])
