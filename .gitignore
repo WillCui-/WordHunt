@@ -2,3 +2,6 @@ __pycache__/
 htmlcov/
 .coverage
 venv/
+test_file.txt
+test_serialize.txt
+words_alpha.txt

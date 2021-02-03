@@ -15,6 +15,7 @@ word_list = []
 
 
 @app.route('/')
+@app.route('/game')
 def index():
     return app.send_static_file('index.html')
 

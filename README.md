@@ -6,7 +6,7 @@ Solver for the 'Word Hunt' game on GamePidgeon
 
 `pip install flask`
 
-Dictionary from https://github.com/dwyl/english-words
+Dictionary from https://github.com/dwyl/english-words, named 'words-alpha.txt'
 
 Tests done with unittest
 
