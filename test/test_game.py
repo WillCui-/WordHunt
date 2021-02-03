@@ -42,6 +42,7 @@ class TestGame(unittest.TestCase):
         self.assertIsInstance(list_of_nodes, list)
         if len(list_of_nodes) > 0:
             self.assertIsInstance(list_of_nodes[0], str)
+        f.close()
         
     
     def test_deserialize_and_store(self):

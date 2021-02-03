@@ -11,6 +11,7 @@ class Game:
     def __init__(self, letters):
         try:
             self.set_board(list(letters))
+            self.trie = Trie()
         except Exception:
             print("Needs 16 letters")
 
