@@ -13,12 +13,14 @@ import Card from "react-bootstrap/Card";
 function Game(props) {
     const [letters, setLetters] = useState([]);
     const [results, setResults] = useState([]);
+    const [completeBoard, setCompleteBoard] = useState(false)
 
     useEffect(() => {
         function handleKey(e) {
             const c = e.key;
             if (e.keyCode === 8) {
                 setLetters(l => l.slice(0, l.length - 1));
+                setCompleteBoard(false)
             } else if (letters.length < 16 && c.length === 1 && c.match(/[a-zA-Z]/i)) {
                 setLetters(l => l.concat([c.toUpperCase()]));
             }
@@ -31,7 +33,9 @@ function Game(props) {
         }
     }, [letters]);
 
-    if (letters.length === 16) {
+    if (letters.length === 16 && completeBoard === false) {
+        setCompleteBoard(true);
+
         const formData = new FormData();
         let messages = '';
         letters.forEach(l => {
