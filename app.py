@@ -1,13 +1,18 @@
-from app import app
 from src.game import Game
 
+from flask import Flask
 from flask import request
+from flask_cors import CORS
+
+app = Flask(__name__, static_folder='./frontend/build', static_url_path='/')
+CORS(app)
 
 blank_game = '                '
 
 g = Game(blank_game)
 g.deserialize_and_store("serialized_trie.txt")
 word_list = []
+
 
 @app.route('/')
 def index():
@@ -29,3 +34,7 @@ def letters():
 @app.route('/api/results', methods=['GET'])
 def results():
     return {'results': word_list}
+
+
+if __name__ == "__main__":
+    app.run()
