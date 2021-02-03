@@ -8,7 +8,7 @@ def serialize(root):
         output.append(key)
 
         value = root[key]
-        if value is not '_end':
+        if value != '_end':
             output += serialize(value)
 
     output.append('>')

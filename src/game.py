@@ -39,6 +39,7 @@ class Game:
         nodes = f.read().split(' ')
         print("constructing trie...")
         self.trie = deserialize(nodes)
+        print("done!")
         f.close()
 
 
