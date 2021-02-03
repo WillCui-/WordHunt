@@ -1,4 +1,3 @@
-# from src.game import Game
 from app import app
 from src.game import Game
 
@@ -11,12 +10,11 @@ g.deserialize_and_store("serialized_trie.txt")
 word_list = []
 
 @app.route('/')
-@app.route('/index')
 def index():
     return app.send_static_file('index.html')
 
 
-@app.route('/letters', methods=['GET', 'POST'])
+@app.route('/api/letters', methods=['GET', 'POST'])
 def letters():
     if request.method == 'GET':
         return {'letters': g.get_board()}
@@ -28,6 +26,6 @@ def letters():
         return {'results': word_list}
         
 
-@app.route('/results', methods=['GET'])
+@app.route('/api/results', methods=['GET'])
 def results():
     return {'results': word_list}

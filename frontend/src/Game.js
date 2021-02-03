@@ -38,7 +38,7 @@ function Game(props) {
             messages += l;
         });
         formData.append("letters", messages);
-        axios.post(`http://localhost:5000/letters`, formData)
+        axios.post(`http://localhost:5000/api/letters`, formData)
             .then(res => {
                 setResults(res.data['results']);
             }).catch(error => {

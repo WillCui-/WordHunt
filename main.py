@@ -13,6 +13,7 @@ import time
 
 
 if __name__ == "__main__":
+    app.run()
     start = time.time()
     # main()
     print("Runtime: %s seconds" % (time.time() - start))
